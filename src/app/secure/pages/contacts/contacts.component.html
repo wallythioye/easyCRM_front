@@ -24,7 +24,7 @@
   </div>
 </div>
 <div *ngIf="showContactForm" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
-  <div class="bg-orange-50 p-6 rounded-lg shadow-lg w-full max-w-2xl mx-4 sm:mx-0">
+  <div class="bg-orange-50 p-6 rounded-lg shadow-lg w-full max-w-2xl mx-4 sm:mx-0 overflow-y-auto" style="max-height: 100vh;">
     <div class="flex justify-between items-center mb-4">
       <h2>{{ formTitle }}</h2>
       <button (click)="showContactForm = false" class="p-2 text-gray-600 hover:text-gray-900">
