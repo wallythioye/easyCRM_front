@@ -1,0 +1,61 @@
+<div class="min-h-screen flex items-center justify-center bg-backgroundC">
+  <div class="bg-white p-8 rounded-lg shadow-lg max-w-3xl w-full flex flex-col md:flex-row">
+
+    <div class="md:w-1/2 p-4">
+      <h2 class="text-2xl font-bold mb-4 font-roboto text-easycrm">EasyCRM</h2>
+      <p class="mb-4">Rejoignez-nous en créant un compte !</p>
+      <form [formGroup]="form" (submit)="onSubmit()">
+        <div class="mb-4">
+          <label for="prenom" class="block text-sm font-medium text-gray-700 flex items-center">Prénom <svg width="6" height="7" viewBox="0 0 6 7" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-1"><path d="M0.8125 5.56299L2.14551 3.81738L0.177734 3.24609L0.51416 2.20508L2.46924 2.9541L2.38037 0.751465H3.48486L3.3833 2.99854L5.30664 2.24951L5.64307 3.30957L3.63721 3.88721L4.93848 5.59473L4.04346 6.24219L2.86914 4.40137L1.71387 6.19141L0.8125 5.56299Z" fill="#FF0000"/></svg></label>
+          <input type="text"
+                 id="prenom"
+                 name="prenom"
+                 formControlName="prenom"
+                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Entrez le prénom" required />
+        </div>
+        <div class="mb-4">
+          <label for="nom" class="block text-sm font-medium text-gray-700 flex items-center">Nom <svg width="6" height="7" viewBox="0 0 6 7" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-1"><path d="M0.8125 5.56299L2.14551 3.81738L0.177734 3.24609L0.51416 2.20508L2.46924 2.9541L2.38037 0.751465H3.48486L3.3833 2.99854L5.30664 2.24951L5.64307 3.30957L3.63721 3.88721L4.93848 5.59473L4.04346 6.24219L2.86914 4.40137L1.71387 6.19141L0.8125 5.56299Z" fill="#FF0000"/></svg></label>
+          <input type="text"
+                 id="nom"
+                 name="nom"
+                 formControlName="nom"
+                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Entrez le nom" required />
+                @if (form.controls['nom'].errors && (form.controls['nom'].dirty || form.controls['nom'].touched)) {
+                  <small   class="form-text text-red-500"  >Le doit avoir aumoins 3 caracteres </small>
+                }
+        </div>
+        <div class="mb-4">
+          <label for="email" class="block text-sm font-medium text-gray-700 flex items-center">Email <svg width="6" height="7" viewBox="0 0 6 7" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-1"><path d="M0.8125 5.56299L2.14551 3.81738L0.177734 3.24609L0.51416 2.20508L2.46924 2.9541L2.38037 0.751465H3.48486L3.3833 2.99854L5.30664 2.24951L5.64307 3.30957L3.63721 3.88721L4.93848 5.59473L4.04346 6.24219L2.86914 4.40137L1.71387 6.19141L0.8125 5.56299Z" fill="#FF0000"/></svg></label>
+          <input type="email"
+                 id="email"
+                 name="email"
+                 formControlName="email"
+                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Entrez l'email" required />
+        </div>
+        <div class="mb-6">
+          <label for="password" class="block text-sm font-medium text-gray-700 flex items-center">Mot de passe <svg width="6" height="7" viewBox="0 0 6 7" fill="none" xmlns="http://www.w3.org/2000/svg" class="ml-1"><path d="M0.8125 5.56299L2.14551 3.81738L0.177734 3.24609L0.51416 2.20508L2.46924 2.9541L2.38037 0.751465H3.48486L3.3833 2.99854L5.30664 2.24951L5.64307 3.30957L3.63721 3.88721L4.93848 5.59473L4.04346 6.24219L2.86914 4.40137L1.71387 6.19141L0.8125 5.56299Z" fill="#FF0000"/></svg></label>
+          <input type="password"
+                 id="password"
+                 name="password"
+                 formControlName="password"
+                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Entrez le mot de passe" required />
+        </div>
+        <div class="flex items-center justify-between mb-4">
+          <button type="submit"
+                  [disabled]="form.invalid"
+                  class="w-full py-2 px-4 bg-green-500 text-white font-bold rounded-md"
+                  [ngClass]="{'bg-green-500 text-white font-bold hover:bg-green-600': !form.invalid, 'bg-backgroundC cursor-not-allowed  text-easycrm': form.invalid}"
+          >Soumettre</button>
+        </div>
+
+        <div class="flex items-center justify-center mt-4 float-left">
+          <a (click)="redirectToLogin()" class="text-sm text-colorHref hover:text-indigo-500 cursor-pointer">Deja un compte ? Se connecter !</a>
+        </div>
+      </form>
+    </div>
+
+    <div class="md:w-1/2 flex items-center justify-center p-4">
+      <img src="assets/register.png" alt="Illustration" class="w-full h-auto max-w-lg" />
+    </div>
+  </div>
+</div>

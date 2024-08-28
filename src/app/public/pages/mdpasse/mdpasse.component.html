@@ -1,0 +1,35 @@
+<div class="min-h-screen flex items-center justify-center bg-backgroundC">
+  <div class="bg-white p-8 rounded-lg shadow-lg max-w-3xl w-full flex flex-col md:flex-row">
+    <div class="md:w-1/2 flex items-center justify-center p-4">
+      <img src="assets/illustration.png" alt="Illustration" class="w-full h-auto max-w-lg" />
+    </div>
+
+    <div class="md:w-1/2 p-4">
+      <h2 class="text-2xl font-bold mb-4 font-roboto text-easycrm">Réinitialiser le mot de passe</h2>
+      <p class="mb-4">Veuillez entrer votre adresse email pour recevoir un lien de réinitialisation du mot de passe.</p>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="mb-4">
+          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+          <input type="email"
+                 id="email"
+                 name="email"
+                 formControlName="email"
+                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" 
+                 placeholder="Entrez votre email" required />
+          <small *ngIf="form.controls['email'].errors && (form.controls['email'].dirty || form.controls['email'].touched)" class="form-text text-red-500">L'email est requis et doit être valide.</small>
+        </div>
+
+        <div class="flex items-center justify-between mb-4">
+          <button type="submit"
+                  [disabled]="form.invalid"
+                  class="w-full py-2 px-4 bg-green-500 text-white font-bold rounded-md"
+                  [ngClass]="{'bg-green-500 text-white font-bold hover:bg-green-600': !form.invalid, 'bg-backgroundC cursor-not-allowed text-easycrm': form.invalid}"
+          >Envoyer le lien de réinitialisation</button>
+        </div>
+        <div class="flex items-center justify-center mt-4 float-left">
+          <a (click)="redirectToLogin()" class="text-sm text-colorHref hover:text-indigo-500 cursor-pointer">Déjà un compte ? Se connecter</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

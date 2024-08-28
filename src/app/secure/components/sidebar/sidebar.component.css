@@ -1,0 +1,11 @@
+.transition-width {
+  transition: width 0.3s;
+}
+
+.toggle-icon {
+  transition: transform 0.3s ease;
+}
+
+button:hover .toggle-icon {
+  transform: rotate(90deg);
+}

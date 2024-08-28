@@ -1,0 +1,86 @@
+<div *ngIf="isFactureModelVisible" class="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center w-full h-full">
+  <div class="bg-white p-4 rounded-lg shadow-lg w-2/4 max-h-screen overflow-y-auto">
+    <div class="flex justify-between items-center mb-4">
+      <img src="assets/lo-crm.jpg" alt="Logo" class="h-27 w-28" />
+      <h2 class="text-xl font-bold">Easy-CRM</h2>
+      <div class="text-right flex-grow">
+        <div class="text-right flex-grow">
+          <h2 class="text-xl font-bold">Facture</h2>
+          <p class="text-sm text-gray-600">Fait à {{ currentCity }}<br> le {{ currentDate | date: 'dd/MM/yyyy HH:mm' }}</p>
+        </div>
+    </div>
+    </div>
+    <div class="flex justify-between mb-4">
+      <div class="w-1/2">
+        <h3 class="text-lg font-semibold">Easy-CRM</h3>
+        <p>Dakar, Sénégal</p>
+        <p>+221 77 000 00 00</p>
+        <p>Easy-crm&#64;gmail.com</p>
+      </div>
+      <div *ngIf="facture" class="w-1/2 text-right">
+        <p class="text-lg font-semibold" >Nom : {{ facture.nom }}</p>
+        <p class="text-sm font-semibold">Numéro : {{ facture.numero }}</p>
+        <p class="text-sm font-semibold">État Facture : {{ facture.etat_facture }}</p>
+      </div>
+    </div>
+
+    <!-- Line Items Table Section -->
+    <div class="overflow-x-auto mb-8">
+      <table class="min-w-full divide-y divide-gray-200 bg-white rounded-lg shadow-md">
+        <thead class="bg-gray-200 text-gray-600">
+          <tr class="bg-gray-100 text-left">
+            <th class="px-6 py-3 text-left text-sm font-medium">Articles</th>
+            <th class="px-6 py-3 text-left text-sm font-medium">Quantité</th>
+            <th class="px-6 py-3 text-left text-sm font-medium">Prix Unitaire</th>
+            <th class="px-6 py-3 text-left text-sm font-medium">TVA</th>
+            <th class="px-6 py-3 text-left text-sm font-medium">Total</th>
+          </tr>
+        </thead>
+        <tbody *ngIf="facture" class="divide-y divide-gray-200">
+          <tr *ngFor="let ligne of facture.lignes_factures">
+            <td class="px-6 py-4 text-sm text-gray-900">{{ ligne.nom }}</td>
+            <td class="px-6 py-4 text-sm text-gray-500">{{ ligne.quantite }}</td>
+            <td class="px-6 py-4 text-sm text-gray-500">{{ ligne.prix_unitaire }} $</td>
+            <td class="px-6 py-4 text-sm text-gray-500">{{ ligne.tva }}%</td>
+            <td class="px-6 py-4 text-sm text-gray-500">{{ ligne.total }} $</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Payment Terms and Totals Section -->
+    <div class="flex justify-between mt-4">
+      <div class="w-1/2">
+        <h3 class="text-lg font-semibold mb-2">Modalités et Conditions de Paiement</h3>
+        <div *ngIf="facture?.etat_facture === 'impayee'" class="mb-4">
+          <p class="text-sm font-semibold">Facture Impayée</p>
+          <label for="due-date" class="block mb-2 font-medium">
+            Date d'échéance :
+            <input id="due-date" [(ngModel)]="facture.date_echeance" type="date" class="w-auto p-1 border border-gray-300 rounded-md" />
+          </label>
+        </div>
+        <div *ngIf="facture?.etat_facture === 'en_retard'">
+          <p class="text-sm font-semibold">Facture En retard</p>
+          <label for="advance-amount" class="block mb-2 font-medium">
+            Montant d'avance :
+            <input id="advance-amount" [(ngModel)]="advanceAmount" (input)="calculateRemainingAmount()" type="number" step="0.01" class="w-auto p-2 border border-gray-300 rounded-md" />
+          </label>
+          <p class="text-gray-700"><strong>Montant restant :</strong> {{ remainingAmount }} $</p>
+        </div>
+      </div>
+
+      <div class="w-1/2 text-right">
+        <p class="text-lg"><strong>Total HT :</strong> {{ totalBeforeTax }} $</p>
+        <p class="text-lg"><strong>TVA ({{ vatRate }}%) :</strong> {{ totalVat }} $</p>
+        <p class="text-lg"><strong>Total TTC :</strong> {{ totalAfterTax }} $</p>
+        <p class="mt-6"><strong>Signature:</strong></p>
+      </div>
+    </div>
+    <p class="mt-4  text-sm">{{ companyFooterText }}</p>
+    <div class="flex justify-end mt-8">
+      <button (click)="telechargerFacture()" class="px-6 py-2 bg-lime-600 text-white rounded-md hover:bg-lime-700 focus:outline-none focus:ring-2 focus:ring-lime-400">
+        Télécharger
+      </button>      
+    </div>
+  </div>
+</div>

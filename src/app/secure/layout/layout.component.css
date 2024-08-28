@@ -1,0 +1,7 @@
+.main-container {
+    overflow-x: hidden; /* Ensure no horizontal scroll for the main content */
+  }
+  
+.flex-1 {
+    overflow: auto;
+}
