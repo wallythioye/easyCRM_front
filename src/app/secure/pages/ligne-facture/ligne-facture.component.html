@@ -1,73 +1,3 @@
-<!-- <div class="flex h-screen">
-  <app-sidebar></app-sidebar>
-
-  <div class="flex-1 flex flex-col">
-    <app-navbar></app-navbar>
-<div *ngIf="facture">
-  <h2>Détails de la facture {{ facture.numero }}</h2>
-  <button mat-raised-button color="primary" (click)="toggleLigneFactureForm()">Ajouter Ligne de Facture</button>
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Nom</th>
-        <th>Quantité</th>
-        <th>Prix Unitaire</th>
-        <th>TVA</th>
-        <th>Total</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let ligne of facture.lignes_factures">
-        <td>{{ ligne.nom }}</td>
-        <td>{{ ligne.quantite }}</td>
-        <td>{{ ligne.prix_unitaire }}</td>
-        <td>{{ ligne.tva }}%</td>
-        <td>{{ ligne.total }}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<div *ngIf="isLigneFactureFormVisible" class="bg-orange-50 p-4 mt-12 rounded-lg shadow-md absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[480px] h-[510px] flex flex-col justify-center items-center mx-auto text-left z-50">
-  <h2 class="text-xl font-medium mb-4 flex justify-start w-full font-sans" style="font-family: 'Open Sans', sans-serif;">Ajouter une Ligne de Facture</h2>
-  <form (ngSubmit)="ajoutLigneFacture()">
-    <div class="mb-4 w-full">
-      <label for="ligneNom" class="block text-gray-700">Nom</label>
-      <input id="ligneNom" type="text" class="w-full p-2 border border-gray-300 rounded-md" placeholder="Entrez le nom de la ligne" [(ngModel)]="ligneFacture.nom" name="nom"/>
-    </div>
-    <div class="mb-4 w-full">
-      <label for="ligneQuantite" class="block text-gray-700">Quantité</label>
-      <input id="ligneQuantite" type="number" class="w-full p-2 border border-gray-300 rounded-md" placeholder="Entrez la quantité" [(ngModel)]="ligneFacture.quantite" name="quantite"/>
-    </div>
-    <div class="mb-4 w-full">
-      <label for="lignePrixUnitaire" class="block text-gray-700">Prix Unitaire</label>
-      <input id="lignePrixUnitaire" type="number" class="w-full p-2 border border-gray-300 rounded-md" placeholder="Entrez le prix unitaire" [(ngModel)]="ligneFacture.prix_unitaire" name="prix_unitaire"/>
-    </div>
-    <div class="mb-4 w-full">
-      <label for="ligneTVA" class="block text-gray-700">TVA</label>
-      <input id="ligneTVA" type="number" class="w-full p-2 border border-gray-300 rounded-md" placeholder="Entrez le TVA" [(ngModel)]="ligneFacture.tva" name="tva"/>
-    </div>
-    <div class="mb-4 w-full">
-      <label for="ligneTotal" class="block text-gray-700">Total</label>
-      <input id="ligneTotal" type="number" class="w-full p-2 border border-gray-300 rounded-md" placeholder="Entrez le total" [(ngModel)]="ligneFacture.total" name="total"/>
-    </div>
-    <div class="flex space-x-4 justify-start w-full">
-      <button class="bg-bColor font-semibold text-black px-4 py-2 rounded-md hover:bg-lime-500" (click)="toggleLigneFactureForm()">
-        Annuler
-      </button>
-      <button class="bg-lime-500 font-semibold text-white px-4 py-2 rounded-md hover:bg-bColor" type="submit">
-        Enregistrer
-      </button>
-    </div>
-  </form>
-</div>
-<div class="p-4">
-  <router-outlet></router-outlet>
-</div>
-
-</div>
-</div> -->
-
 <div class="flex h-screen">
   <app-sidebar></app-sidebar>
 
@@ -76,7 +6,7 @@
 
 <div *ngIf="facture" class="p-4 space-y-4">
   <!-- Header Section -->
-  <div class="flex justify-between items-center">
+  <div class="flex justify-between items-center mt-20 overflow-x-auto">
     <h2 class="text-xl font-bold">Détails facture : {{ facture.nom }}</h2>
     <div class="flex space-x-2">
       <button (click)="showDetailFacture(facture.id)" class="px-4 py-2 bg-lime-500 text-white rounded-md hover:bg-lime-600 focus:outline-none focus:ring-2 focus:ring-lime-300">Importer </button>
