@@ -38,6 +38,8 @@ export class OpportunitesComponent implements OnInit {
   colors = ['#FF0000', '#00FF00', '#0000FF', '#FFFF00'];
   selectedColor: Record<string, string> = {};
   opportunitiesVisibility: Record<string, boolean> = {};
+  pipelineVisibility: Record<string, boolean> = {};
+
   isEditing: boolean = false;
 
 
@@ -363,6 +365,15 @@ updatePipelineColor(pipelineId: number, newColor: string) {
   toggleIconsVisibility(opportuniteId: number) {
     this.opportunitiesVisibility[opportuniteId] = !this.opportunitiesVisibility[opportuniteId];
   }
+
+  togglePipelineIconsVisibility(pipelineId: number) {
+    this.pipelineVisibility[pipelineId] = !this.pipelineVisibility[pipelineId];
+  }
+  
+  toggleOpportunityIconsVisibility(opportuniteId: number) {
+    this.opportunitiesVisibility[opportuniteId] = !this.opportunitiesVisibility[opportuniteId];
+  }
+  
 
   openAddOpportunityForm(pipelineId: number): void {
     this.selectedPipelineId = pipelineId;

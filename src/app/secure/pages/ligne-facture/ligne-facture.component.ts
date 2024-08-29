@@ -289,8 +289,10 @@ export class LigneFactureComponent implements OnInit {
   showDetailFacture(id: number): void {
     this.router.navigate(['/factures/models', id]); 
   }
+
   goBackToFacture() {
-  this.router.navigate(['/factures']);
+    this.router.navigateByUrl('/factures');
   }
+  
   
 }

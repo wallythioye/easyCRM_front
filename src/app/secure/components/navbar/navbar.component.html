@@ -1,4 +1,4 @@
-<div class="bg-navbar text-white flex justify-end items-center p-4 shadow fixed top-0 left-0 w-full z-50">
+<div class="bg-navbar text-white flex justify-end items-center p-4 shadow">
   <!-- Icons & Profile -->
   <div class="flex items-center">
     <div class="relative">
@@ -36,11 +36,9 @@
 
     </div>
 
-    <!-- Profile Icon -->
-    <div class="ml-4 flex items-center">
+    <!-- <div class="ml-4 flex items-center">
       <img ngSrc="../public/assets/user.jpg" alt="User Avatar" class="w-10 h-10 rounded-full" height="2208"
            width="1242">
-      <!-- <span class="ml-2">Nouha Ageram</span> -->
       
         <span *ngIf="utilisateurs" class="ml-2">
           {{ utilisateurs.prenom }} {{ utilisateurs.nom }}
@@ -48,6 +46,6 @@
         <span *ngIf="!utilisateurs" class="ml-2">
           Non connecté
         </span>
-    </div>
+    </div> -->
   </div>
 </div>

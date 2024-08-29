@@ -1,4 +1,4 @@
-<div class="flex justify-between items-center px-1 py-4 mt-20 overflow-x-auto">
+<div class="flex justify-between items-center px-1 py-4">
   <div class="font-bold text-2xl text-gray-800 font-roboto italic">Listes des factures</div>
   <div class="flex space-x-4">
     <button class="px-4 py-2 font-semibold bg-white text-lime-500 border-2 border-gray-300 text-sm rounded-md hover:bg-gray-500 hover:text-white" (click)="fileInput.click()">Télécharger</button>
@@ -106,7 +106,7 @@
       <th class="p-2">Nom</th>
       <th class="p-2">Numéro</th>
       <th class="p-2">Date</th>
-      <th class="p-2">Montant</th>
+      <!-- <th class="p-2">Montant</th> -->
       <th class="p-2">Etat</th>
       <th class="p-2">Contact</th>
       <th class="p-2">Action</th>
@@ -118,7 +118,7 @@
       <td class="p-2">{{ facture.nom }}</td>
       <td class="p-2">{{ facture.numero }}</td>
       <td class="p-2">{{ facture.date | date }}</td>
-      <td class="p-2">{{ facture.montant_total }}</td>
+      <!-- <td class="p-2">{{ facture.montant_total }}</td> -->
       <td class="p-2">{{ facture.etat_facture }}</td>
       <td class="p-2">
         <ng-container *ngIf="facture.factures_opportunites">

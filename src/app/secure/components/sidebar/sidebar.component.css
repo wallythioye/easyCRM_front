@@ -13,7 +13,3 @@ button:hover .toggle-icon {
 .flex-1 {
   overflow: auto;
 }
-
-:host {
-  z-index: 100; /* Pour s'assurer que le sidebar reste au-dessus des autres éléments si nécessaire */
-}

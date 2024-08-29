@@ -80,9 +80,10 @@ export class ContactsComponent implements OnInit {
     this.contactService.createContact(this.newContact).subscribe({
       next: (response) => {
         console.log('Réponse de l\'API:', response); 
-        this.getContact(); 
         this.showContactForm = false;
-        this.newContact = new Contact(); 
+        this.newContact = new Contact();
+        alert('Contact créee avec succés');
+        this.getContact(); 
       },
     });
   }
@@ -116,13 +117,14 @@ export class ContactsComponent implements OnInit {
 
   deleteContact(contact: Contact): void {
     if (contact.id !== undefined) {
-      if (confirm(`Êtes-vous sûr de vouloir supprimer le contact ${contact.nom} ?`)) {
+      if (confirm(`Êtes-vous sûr de vouloir supprimer le contact ${contact.prenom} ${contact.nom} ?`)) {
         this.contactService.deleteContact(contact.id).subscribe(() => {
           this.getContact();
         });
       }
     } else {
       console.error("Contact ID is undefined.");
+    
     }
   }
 

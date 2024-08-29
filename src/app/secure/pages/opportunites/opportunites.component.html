@@ -1,6 +1,6 @@
 
 <div class="opportunities-container relative">
-  <div class="flex items-center justify-between mb-4 border-b border-gray-300 pb-1 mt-20 overflow-x-auto">
+  <div class="flex items-center justify-between mb-4 border-b border-gray-300 pb-1">
     <div class="flex items-center space-x-4">
       <button class="text-black font-semibold">
         <i class="fas fa-list mr-2"></i> Listes
@@ -144,10 +144,11 @@
         <div class="flex justify-between items-center mb-4">
           <h2 class="text-xl font-semibold text-white">{{ pipeline.etape_pipeline }}</h2>
           <div class="space-x-2 relative">
-            <button class="text-md font-normal text-white" (click)="toggleIconsVisibility(pipeline.id)">
+            <button class="text-md font-normal text-white" (click)="togglePipelineIconsVisibility(pipeline.id)">
               <i class="fas fa-ellipsis-h"></i>
             </button>
-            <div *ngIf="opportunitiesVisibility[pipeline.id]" class="absolute top-full right-0 mt-2 flex flex-col items-end bg-white p-2 rounded shadow-lg z-10">
+
+            <div *ngIf="pipelineVisibility[pipeline.id]" class="absolute top-full right-0 mt-2 flex flex-col items-end bg-white p-2 rounded shadow-lg z-10">
               <div class="bg-white rounded-lg p-6 shadow-lg w-[220px] h-[280px]">
                 <h3 class="text-lg font-semibold mb-4">Listes des actions</h3>
                 <button (click)="deletePipeline(pipeline.id)" class="block mb-2 text-red-500">
@@ -185,7 +186,8 @@
                 <div class="border-t-8 border-yellow-400 w-full mt-2 rounded-full"></div>
               </div>
 
-              <button class="ml-2" (click)="toggleIconsVisibility(opportunite.id)">
+          
+              <button class="ml-2" (click)="toggleOpportunityIconsVisibility(opportunite.id)">
                 <i class="fas fa-plus-circle text-black"></i>
               </button>
               <div *ngIf="opportunitiesVisibility[opportunite.id]" class="absolute top-full right-0 mt-2 flex flex-col items-end animate__animated animate__bounce animate__backInDown ">
