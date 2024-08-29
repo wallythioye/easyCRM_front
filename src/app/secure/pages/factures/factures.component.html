@@ -108,7 +108,7 @@
       <th class="p-2">Date</th>
       <!-- <th class="p-2">Montant</th> -->
       <th class="p-2">Etat</th>
-      <th class="p-2">Contact</th>
+      <!-- <th class="p-2">Contact</th> -->
       <th class="p-2">Action</th>
     </tr>
   </thead>
@@ -120,7 +120,7 @@
       <td class="p-2">{{ facture.date | date }}</td>
       <!-- <td class="p-2">{{ facture.montant_total }}</td> -->
       <td class="p-2">{{ facture.etat_facture }}</td>
-      <td class="p-2">
+      <!-- <td class="p-2">
         <ng-container *ngIf="facture.factures_opportunites">
           <ng-container *ngFor="let fo of facture.factures_opportunites">
             <ng-container *ngIf="fo.opportunite.contact">
@@ -128,7 +128,7 @@
             </ng-container>
           </ng-container>
         </ng-container>
-      </td>
+      </td> -->
       <td class="p-2 flex space-x-2">
         <button 
           class="p-2 border bg-gray-200 rounded-md hover:bg-gray-300"

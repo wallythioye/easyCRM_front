@@ -190,6 +190,7 @@ export class LigneFactureComponent implements OnInit {
           
           this.ligneFacture = { id: 0, nom: '', quantite: 0, prix_unitaire: 0, tva: 0, total: 0, factureId: this.facture!.id };
           alert('Ligne de facture mise à jour avec succès');
+          this.getDetailFacture(this.facture!.id);
           
         },
         (error) => {
@@ -206,6 +207,7 @@ export class LigneFactureComponent implements OnInit {
           this.toggleLigneFactureForm();
           this.ligneFacture = { id: 0, nom: '', quantite: 0, prix_unitaire: 0, tva: 0, total: 0, factureId: this.facture!.id };
           alert('Ligne de facture ajoutée avec succès');
+          this.getDetailFacture(this.facture!.id);
         },
         (error) => {
           console.error('Erreur lors de l\'ajout de la ligne de facture :', error);

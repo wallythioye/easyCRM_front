@@ -94,6 +94,7 @@ export class FacturesComponent {
           lignes_factures: []
         };
         this.showFactureForm = false;
+        this.getFactures();
       },
       error: (err) => {
         console.error('Erreur lors de l\'ajout de la facture:', err);
